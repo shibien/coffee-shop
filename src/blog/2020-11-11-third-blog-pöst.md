@@ -1,5 +1,5 @@
 ---
-title: Third Blog Pöst
+title: Third Blog Post
 date: 2020-11-11T21:10:13.375Z
 ---
 # Third Blog Post
