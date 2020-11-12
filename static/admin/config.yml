@@ -11,6 +11,9 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
+      - name: "contentKey"
+        widget: "hidden"
+        default: "blog"
       - label: "Title"
         name: "title"
         widget: "string"
