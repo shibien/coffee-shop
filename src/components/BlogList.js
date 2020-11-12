@@ -10,6 +10,7 @@ export default function BlogList(){
         {
             allMarkdownRemark(
                 sort: { fields: frontmatter___date, order: DESC }
+                filter: { frontmatter: { contentKey: { eq : "blog" }}}
                 limit: 3
             ){
                 edges {

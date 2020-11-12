@@ -23,6 +23,9 @@ exports.createPages = async function({ graphql, actions }) {
         allMarkdownRemark {
           edges {
             node {
+              frontmatter {
+                contentKey
+              }
               fields {
                 slug
               }
@@ -31,28 +34,30 @@ exports.createPages = async function({ graphql, actions }) {
         }
       }
     `);
-    result.data.allMarkdownRemark.edges
-    .forEach(({ node }) => {
-      createPage({
-        path: node.fields.slug,
-        component: path.resolve(`./src/templates/blog.js`),
-        context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          slug: node.fields.slug
-        }
+    const posts = result.data.allMarkdownRemark.edges
+      .filter(edge => edge.node.frontmatter.contentKey === 'blog');
+    posts
+      .forEach(({ node }) => {
+        createPage({
+          path: node.fields.slug,
+          component: path.resolve(`./src/templates/blog.js`),
+          context: {
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            slug: node.fields.slug
+          }
+        });
       });
-    });
   
 
   // Create blog-list pages
-  const posts = result.data.allMarkdownRemark.edges;
+  
   const pageSize = 2;
   const pageCount = Math.ceil(posts.length / pageSize);
 
   const templatePath = path.resolve('src/templates/blog-list.js');
 
-  for (let i =0; i<pageCount;i++) {
+  for (let i = 0; i < pageCount; i++) {
     let path = '/blog';
     if (i >0 ){
       path += `/${i+1}`
