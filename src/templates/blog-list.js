@@ -30,13 +30,13 @@ return (
     <div id={styles.pageLinks}>
         {pageContext.currentPage > 1 && (
             <Link to={previousPage}>
-                '&lt;''&lt;' Previous Page
+                &lt;&lt; Previous Page
             </Link>
         )}
 
         {pageContext.currentPage < pageContext.pageCount && (
             <Link to={nextPage}>
-                Next Page '&gt;''&gt;'
+                Next Page &gt;&gt;
             </Link>
         )}
         </div>
