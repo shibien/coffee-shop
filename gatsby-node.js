@@ -47,7 +47,7 @@ exports.createPages = async function({ graphql, actions }) {
 
 // Create blog-list pages
 const posts = result.data.allMarkdownRemark.edges;
-const postsPerPage = 2;
+const pageSize = 2;
 const pageCount = Math.ceil(posts.length / pageSize);
 
 const templatePath = path.resolve('src/templates/blog-list.js');
