@@ -12,6 +12,7 @@ export default function BlogList(){
                 {
                     fields: frontmatter___date, order: DESC
                 })
+                limit: 3
             {
                 edges {
                     node {
@@ -43,6 +44,9 @@ export default function BlogList(){
                     />
                 ))
             }
+            <div>
+                <Link to="/blog">More "&gt;""&gt;"</Link>
+            </div>
         </div>
     );
 }
